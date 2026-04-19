@@ -205,10 +205,12 @@ Todas as entidades DEVEM:
 
 ### Organização
 
-Estrutura recomendada:
+Estrutura obrigatória:
 
 ```id="docs-structure"
 docs/
+ ├── evolutiva/       # Evolução do projeto (features, bugfixes)
+ ├── prs_commits/     # Documentos de Pull Requests e Padrões de Commit
  ├── auth/
  ├── clientes/
  ├── setup/
@@ -264,8 +266,8 @@ Descrever o que foi feito
 * ❌ Não finalizar tarefa sem documentação
 * ❌ Não deixar mudanças sem rastreabilidade
 * ✅ Documentação deve permitir entendimento futuro sem depender de contexto externo
-* ✅ **Pull Requests**: Cada PR realizado DEVE ter um arquivo correspondente criado dentro da pasta `/docs`.
-* ✅ **Commits**: Todos os commits DEVEM seguir estritamente as regras descritas no arquivo `padrao-commits.md` (cópia disponível em `/docs/padrao-commits.md`).
+* ✅ **Pull Requests**: Cada PR realizado DEVE ter um arquivo correspondente criado dentro da pasta `/docs/prs_commits`.
+* ✅ **Commits**: Todos os commits DEVEM seguir estritamente as regras descritas no arquivo `padrao-commits.md` (cópia disponível em `/docs/prs_commits/padrao-commits.md`).
 
 ---
 
