@@ -44,7 +44,7 @@ export const LoginForm = () => {
 
 				<Field label="Senha" required>
 					<InputGroup
-						w={'100%'}
+						w={"100%"}
 						endElement={
 							<Button
 								h="1.75rem"

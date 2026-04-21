@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { LoginForm } from "../components/LoginForm";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export default function Login() {
 	return (
@@ -10,6 +11,7 @@ export default function Login() {
 			justify="center"
 			bg={{ base: "gray.50", _dark: "gray.900" }}
 		>
+			<ThemeToggle />
 			<Flex
 				direction={{ base: "column", md: "row" }}
 				w={{ base: "90%", md: "80%", lg: "1000px" }}
