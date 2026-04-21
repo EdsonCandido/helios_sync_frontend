@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# Helios ITR
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Sobre o Projeto
 
-Currently, two official plugins are available:
+O Helios ITR é uma aplicação web baseada em uma arquitetura **SPA (Single Page Application)** aliada a um backend **RESTful**. O sistema incorpora autenticação JWT e segue diretrizes rigorosas de desenvolvimento e segurança.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tecnologias (Stack Principal)
 
-## React Compiler
+- **Frontend:** React + Vite + TypeScript
+- **UI:** Chakra UI (v3.34.0+)
+- **Backend:** Spring Boot (Java 22)
+- **Banco de Dados:** PostgreSQL
+- **Autenticação:** JWT (Stateless)
+- **Qualidade de Código:** Biome (substituindo ESLint/Prettier)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🏗️ Arquitetura e Padrões
 
-## Expanding the ESLint configuration
+Para conhecer profundamente os padrões arquiteturais, de tipagem, uso de Dark Mode, convenções de código e anti-patterns a serem evitados, consulte o arquivo **[`agents.md`](./agents.md)**. Ele é a principal referência técnica e de arquitetura do projeto.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Status do Desenvolvimento
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Conforme documentado em nosso diretório histórico **[`/docs`](./docs/)**:
+- **Frontend Inicializado:** Base estabelecida com o template Vite + React + TS.
+- **Página de Login:** Implementada página e formulário de autenticação mockados com tipagem forte, validações e suporte nativo ao Dark Mode utilizando a arquitetura do Chakra UI v3.
+- **Ferramental de Linting:** Biome configurado para linting e formatação em todo o projeto.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📜 Padrão de Commits
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+A fim de manter clareza e rastreabilidade no histórico, o projeto adota um padrão rigoroso de commits estruturados, **obrigatoriamente em português**. 
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Formato base: `<tipo>(<escopo>): <descrição curta>`
+Exemplo: `feat(auth): criar tela de login`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Para consultar os tipos permitidos, escopos e outras regras, leia a documentação oficial do nosso padrão no arquivo **[`padrao-commits.md`](./padrao-commits.md)**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📝 Documentação Obrigatória
+
+Toda interação no projeto (nova feature, bugfix, refatoração, PRs) **DEVE** gerar documentação salva na pasta `/docs`.
+
+Estrutura:
+- `/docs/evolutiva/`: Documentos que registram a evolução diária (arquivos no padrão `YYYY-MM-DD_nome-da-tarefa.md`).
+- `/docs/prs_commits/`: Registros de Pull Requests e espelhos dos padrões de commit do projeto.
+
+## ⚙️ Instalação e Execução
+
+### Frontend
+
+O repositório principal do frontend está na raiz ou na subpasta dedicada. Para executá-lo:
+
+```bash
+# 1. Instale as dependências
+npm install
+
+# 2. Inicie o servidor de desenvolvimento Vite
+npm run dev
+
+# 3. Verificação de código com Biome
+npm run lint
+npm run format
 ```
