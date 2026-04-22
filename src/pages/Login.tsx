@@ -1,8 +1,20 @@
 import { Box, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Login() {
+	const { isAuthenticated } = useAuth();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate("/dashboard", { replace: true });
+		}
+	}, [isAuthenticated, navigate]);
+
 	return (
 		<Flex
 			minH="100vh"
@@ -11,7 +23,7 @@ export default function Login() {
 			justify="center"
 			bg={{ base: "gray.50", _dark: "gray.900" }}
 		>
-			<ThemeToggle />
+			<ThemeToggle position="fixed" top="4" right="4" zIndex="sticky" />
 			<Flex
 				direction={{ base: "column", md: "row" }}
 				w={{ base: "90%", md: "80%", lg: "1000px" }}

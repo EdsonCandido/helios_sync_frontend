@@ -1,5 +1,7 @@
 import { Input, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 import { Button } from "./ui/button";
 import { Field } from "./ui/field";
 import { InputGroup } from "./ui/input-group";
@@ -10,6 +12,8 @@ export const LoginForm = () => {
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
+	const { login } = useAuth();
 
 	const handleLogin = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -18,12 +22,29 @@ export const LoginForm = () => {
 		// Simulate API call
 		setTimeout(() => {
 			setIsLoading(false);
-			toaster.create({
-				title: "Login successful.",
-				description: "Welcome back to Helios ITR.",
-				type: "success",
-				duration: 3000,
-			});
+			if (email === "teste@helios.com" && password === "teste") {
+				login({
+					username: "Usuário Teste",
+					email: "teste@helios.com",
+					token: "static-token-123",
+					modules: ["clientes", "financeiro", "arquivos"],
+				});
+
+				toaster.create({
+					title: "Login realizado com sucesso.",
+					description: "Bem-vindo de volta ao Helios ITR.",
+					type: "success",
+					duration: 3000,
+				});
+				navigate("/dashboard");
+			} else {
+				toaster.create({
+					title: "Erro ao entrar.",
+					description: "E-mail ou senha incorretos.",
+					type: "error",
+					duration: 3000,
+				});
+			}
 		}, 1500);
 	};
 
