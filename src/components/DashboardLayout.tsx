@@ -31,11 +31,7 @@ const SidebarItem = ({
 	active: boolean;
 }) => (
 	<Box
-		as={Link}
-		to={href}
 		w="full"
-		px={4}
-		py={3}
 		borderRadius="md"
 		bg={active ? "blue.50" : "transparent"}
 		color={active ? "blue.600" : "gray.600"}
@@ -52,10 +48,12 @@ const SidebarItem = ({
 		}}
 		transition="all 0.2s"
 	>
-		<HStack gap={3}>
-			<Icon as={icon} fontSize="lg" />
-			<Text fontWeight={active ? "semibold" : "medium"}>{label}</Text>
-		</HStack>
+		<Link to={href} style={{ display: "block", padding: "12px 16px", width: "100%", textDecoration: "none", color: "inherit" }}>
+			<HStack gap={3}>
+				<Icon as={icon} fontSize="lg" />
+				<Text fontWeight={active ? "semibold" : "medium"}>{label}</Text>
+			</HStack>
+		</Link>
 	</Box>
 );
 
