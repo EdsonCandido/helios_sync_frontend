@@ -21,7 +21,9 @@ Para conhecer profundamente os padrões arquiteturais, de tipagem, uso de Dark M
 
 Conforme documentado em nosso diretório histórico **[`/docs`](./docs/)**:
 - **Frontend Inicializado:** Base estabelecida com o template Vite + React + TS.
-- **Página de Login:** Implementada página e formulário de autenticação mockados com tipagem forte, validações e suporte nativo ao Dark Mode utilizando a arquitetura do Chakra UI v3.
+- **Página de Login:** Implementada com suporte nativo ao Dark Mode e Toggle de Tema.
+- **Autenticação e Roteamento:** Contexto de autenticação (`AuthContext`), rotas protegidas e Layout de Dashboard integrados.
+- **Dockerização:** Infraestrutura de containerização configurada com Nginx para ambiente de produção.
 - **Ferramental de Linting:** Biome configurado para linting e formatação em todo o projeto.
 
 ## 📜 Padrão de Commits
@@ -43,9 +45,7 @@ Estrutura:
 
 ## ⚙️ Instalação e Execução
 
-### Frontend
-
-O repositório principal do frontend está na raiz ou na subpasta dedicada. Para executá-lo:
+### Execução Local (Desenvolvimento)
 
 ```bash
 # 1. Instale as dependências
@@ -57,4 +57,16 @@ npm run dev
 # 3. Verificação de código com Biome
 npm run lint
 npm run format
+```
+
+### Execução via Docker (Produção)
+
+O projeto conta com automação para build e execução em container:
+
+```bash
+# Permissão de execução no script
+chmod +x start_docker.sh
+
+# Build e execução automática (acessível em localhost:81)
+./start_docker.sh
 ```
